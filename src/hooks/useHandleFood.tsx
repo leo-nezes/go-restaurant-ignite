@@ -65,7 +65,17 @@ export function HandleFoodProvider({ children }: HandleFoodProviderProps) {
     setFoods([...newFoods]);
   };
 
-  const deleteFood = (idFood: number) => {};
+  const deleteFood = async (idFood: number): Promise<void> => {
+    try {
+      await api.delete(`/foods/${idFood}`);
+
+      const newFoods = foods.filter(food => food.id !== idFood);
+
+      setFoods(newFoods);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <HandleFoodContext.Provider 

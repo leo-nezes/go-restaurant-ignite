@@ -64,7 +64,7 @@ const Dashboard = (): JSX.Element => {
             <FoodComponent
               key={food.id}
               food={food} 
-              handleDeleteFood={() => handleDeleteFood(food.id)}
+              handleDeleteFood={handleDeleteFood}
               handleEditFood={handleEditFood}
             />
           ))}

@@ -7,7 +7,7 @@ import { IFood } from '../../types';
 
 interface IFoodProps {
   food: IFood;
-  handleDeleteFood: () => void;
+  handleDeleteFood: (id: number) => void;
   handleEditFood: (food: IFood) => void;
 }
 
@@ -16,6 +16,10 @@ const Food = ({ food, handleEditFood, handleDeleteFood}: IFoodProps): JSX.Elemen
   
   function setHandleEditFood(): void {
     handleEditFood(food);
+  }
+  
+  function setHandleDeleteFood(): void {
+    handleDeleteFood(food.id);
   }
 
   const toggleAvailable = (id: number): void => {
@@ -48,7 +52,7 @@ const Food = ({ food, handleEditFood, handleDeleteFood}: IFoodProps): JSX.Elemen
           <button
             type="button"
             className="icon"
-            onClick={handleDeleteFood}
+            onClick={setHandleDeleteFood}
             data-testid={`remove-food-${food.id}`}
           >
             <FiTrash size={20} />
