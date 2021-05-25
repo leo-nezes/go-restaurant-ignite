@@ -28,6 +28,7 @@ const ModalAddFood = ({
     };
 
     addFood(newData);
+    setIsOpen();
   }
 
   return (
