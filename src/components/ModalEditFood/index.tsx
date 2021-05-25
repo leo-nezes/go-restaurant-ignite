@@ -24,8 +24,16 @@ const ModalEditFood = ({
 
   const { updateFood } = useHandleFood();
 
-  const handleSubmit = (food: IFood): void => {
-    updateFood(food);
+  const handleSubmit = (food: Omit<IFood, 'id' | 'available'>): void => {
+    const { id, available } = editingFood;
+
+    const newFood = {
+      id,
+      available,
+      ...food,
+    }
+
+    updateFood(newFood);
     setIsOpen();
   };
 

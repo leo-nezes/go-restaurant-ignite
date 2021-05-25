@@ -8,12 +8,16 @@ import { IFood } from '../../types';
 interface IFoodProps {
   food: IFood;
   handleDeleteFood: () => void;
-  handleEditFood: () => void;
+  handleEditFood: (food: IFood) => void;
 }
 
-const Food = ({ food, handleDeleteFood, handleEditFood}: IFoodProps): JSX.Element => {
+const Food = ({ food, handleEditFood, handleDeleteFood}: IFoodProps): JSX.Element => {
   const { updateFoodAvailability } = useHandleFood();
   
+  function setHandleEditFood(): void {
+    handleEditFood(food);
+  }
+
   const toggleAvailable = (id: number): void => {
     updateFoodAvailability(id);
   };
@@ -35,7 +39,7 @@ const Food = ({ food, handleDeleteFood, handleEditFood}: IFoodProps): JSX.Elemen
           <button
             type="button"
             className="icon"
-            onClick={handleEditFood}
+            onClick={setHandleEditFood}
             data-testid={`edit-food-${food.id}`}
           >
             <FiEdit3 size={20} />

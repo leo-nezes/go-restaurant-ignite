@@ -4,6 +4,7 @@ import { FiCheckSquare } from 'react-icons/fi';
 import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
+import { IFood } from '../../types';
 import { useHandleFood } from '../../hooks/useHandleFood';
 
 interface ModalAddFoodProps {
@@ -19,16 +20,14 @@ const ModalAddFood = ({
 
   const { addFood } = useHandleFood();
 
-  const handleSubmit = () => {
-    const food = {
-      name: 'Teste',
-      description: 'Teste',
-      price: 10,
+  const handleSubmit = (data: Omit<IFood, 'id'>) => {
+    const newData = {
+      ...data,
       available: true,
-      image: 'Teste',
+      price: Number(data.price)
     };
 
-    addFood(food);
+    addFood(newData);
   }
 
   return (

@@ -26,8 +26,8 @@ const Dashboard = (): JSX.Element => {
     setOpenEditModal(!openEditModal);
   };
 
-  const handleEditFood = (food: IFood):void => {
-    setEditingFood(food);
+  const handleEditFood = (editFood: IFood):void => {
+    setEditingFood(editFood);
     setOpenEditModal(true);
   };
 
@@ -65,7 +65,7 @@ const Dashboard = (): JSX.Element => {
               key={food.id}
               food={food} 
               handleDeleteFood={() => handleDeleteFood(food.id)}
-              handleEditFood={() => handleEditFood(food)}
+              handleEditFood={handleEditFood}
             />
           ))}
       </FoodsContainer>
